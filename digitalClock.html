@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .clock {
+        display: flex;
+        font-size: 80px;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="hours">
+        <h1 id="h">HH</h1>
+      </div>
+      <h1 class="colon">:</h1>
+      <div class="minuts">
+        <h1 id="m">MM</h1>
+      </div>
+      <h1 class="colon">:</h1>
+      <div class="second">
+        <h1 id="s">SS</h1>
+      </div>
+      <h1 id="ampm"></h1>
+    </div>
+  </body>
+  <script>
+    let hour = document.getElementById("h");
+    let minute = document.getElementById("m");
+    let second = document.getElementById("s");
+    let am_pm = document.getElementById('ampm');
+    setInterval(() => {
+      let time = new Date();
+      hour.innerText = time.getHours();
+      minute.innerText = time.getMinutes();
+      second.innerText = time.getSeconds();
+      if(time.getSeconds() < 10)
+        second.innerText = `0${time.getSeconds()}`
+      if(time.getMinutes() < 10)
+        minute.innerText = `0${time.getMinutes()}`
+      if(time.getHours() < 10)
+        hour.innerText = `0${time.getHours()}`
+      if(time.getHours() < 12)
+        am_pm.innerText = 'am';
+      else
+        ampm.innerText = "pm";
+      }, 1000);
+  </script>
+</html>
